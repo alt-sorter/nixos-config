@@ -100,6 +100,7 @@
 	    pkgs.postgresql
 	    pkgs.lazydocker
 	    pkgs.jetbrains.pycharm-community-bin
+	    pkgs.bruno
 
 	(vscode-with-extensions.override {
 	    vscodeExtensions = with vscode-extensions; [
