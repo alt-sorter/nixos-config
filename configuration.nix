@@ -89,7 +89,6 @@
 	    neofetch
             wget
             htop
-	    git
 	    pkgs.wezterm
 	    pkgs.nodejs_23
 	    pkgs.python314
@@ -99,7 +98,8 @@
 	    pkgs.fish
 	    pkgs.poetry
 	    pkgs.postgresql
-
+	    pkgs.lazydocker
+	    pkgs.jetbrains.pycharm-community-bin
 
 	(vscode-with-extensions.override {
 	    vscodeExtensions = with vscode-extensions; [
@@ -111,6 +111,8 @@
 		tal7aouy.icons
 		antfu.icons-carbon
 		eamodio.gitlens
+		zhuangtongfa.material-theme
+		
     	    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       		    {
         		name = "remote-ssh-edit";
@@ -118,6 +120,12 @@
         		version = "0.47.2";
         		sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
       		    }
+		    {
+			name = "symbols";
+			publisher = "miguelsolorio";
+			version = "0.0.22";
+			sha256 = "sha256-LZYyz7NxOkLuSIPMOPeUPQIsfq4vI+3NfN5MklQlxEw=";
+		    }
     		];
   	    })
         ];
@@ -167,12 +175,13 @@
     fzf
     fishPlugins.grc
     grc                 # </>
+    git
   ];
 
   
   # Enable Fish Shell
   programs.fish.enable = true;
-  
+  programs.starship.enable = true; 
   programs.bash = {
     interactiveShellInit = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
