@@ -101,6 +101,7 @@
 	    pkgs.lazydocker
 	    pkgs.jetbrains.pycharm-community-bin
 	    pkgs.bruno
+	    pkgs.discord
 
 	(vscode-with-extensions.override {
 	    vscodeExtensions = with vscode-extensions; [
